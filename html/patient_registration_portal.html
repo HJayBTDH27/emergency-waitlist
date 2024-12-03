@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Portal</title>
+</head>
+
+<body>
+    <H1>Patient Registration</H1>
+    <div>
+        <h3>Personal Information</h3>
+        <h4>Last Name</h4>
+        <input type="text" id="lastName" name="userName" placeholder="Enter your Last Name">
+        <h4>First Name</h4>
+        <input type="text" id="firstName" name="userName" placeholder="Enter your First Name">
+        <h4>Age</h4>
+        <input type="number" id="age" name="userAge" placeholder="Enter your Age">
+        <h4>Sex</h4>
+        <input type="radio" id="sexFemale" name="userSex" value=true>
+        <label for="sexFemale">Female</label>
+        <input type="radio" id="sexMale" name="userSex" value=false>
+        <label for="sexMale">Male</label>
+        <h4>Health Card Number</h4>
+        <input type="number" id="healthCard" name="userCard" placeholder="Enter your Health Card">
+        <h4>Private Insurance</h4>
+        <input type="number" id="healthInsurance" name="userInsurance" placeholder="Enter your Private Insurance">
+    </div>
+    <div>
+        <h3>Location of Condition on Body</h3>
+        <input type="radio" id="bodyChest" name="userBody" value=0>
+        <label for="bodyChest">Chest</label>
+        <input type="radio" id="bodyHead" name="userBody" value=1>
+        <label for="bodyHead">Head</label>
+        <input type="radio" id="bodyAbdomen" name="userBody" value=2>
+        <label for="bodyAbdomen">Abdomen</label>
+        <input type="radio" id="bodyPelvis" name="userBody" value=3>
+        <label for="bodyPelvis">Pelvis</label>
+        <input type="radio" id="bodyArmsLegs" name="userBody" value=4>
+        <label for="bodyArmsLegs">Arms / Legs</label>
+        <input type="radio" id="bodyHandsFeet" name="userBody" value=5>
+        <label for="bodyHandsFeet">Hands / Feet</label>
+    </div>
+    <div>
+        <h3>Nature of Condition</h3>
+        <input type="checkbox" id="cdnUnconcious" name="condition1" value=0>
+        <label for="cdnUnconcious">Unconcious</label><br>
+        <input type="checkbox" id="cdnTraumaWound" name="condition2" value=1>
+        <label for="cdnTraumaWound">Trauma / Wound</label><br>
+        <input type="checkbox" id="cdnPain" name="condition3" value=2>
+        <label for="cdnPain">Pain</label><br>
+        <input type="checkbox" id="cdnIllness" name="condition4" value=3>
+        <label for="cdnIllness">Illness</label>
+    </div>
+    <div>
+        <h3>Level of Pain / Discomfort</h3>
+        <input type="radio" id="painNone" name="userPain" value=0>
+        <label for="painNone">0 - No pain/discomfort</label>
+        <input type="radio" id="pain1" name="userPain" value=1>
+        <label for="painMild">1</label>
+        <input type="radio" id="pain2" name="userPain" value=2>
+        <label for="pain2">2</label>
+        <input type="radio" id="pain3" name="userPain" value=3>
+        <label for="pain3">3</label>
+        <input type="radio" id="pain4" name="userPain" value=4>
+        <label for="pain4">4</label>
+        <input type="radio" id="pain5" name="userPain" value=5>
+        <label for="pain5">5 - Persistent pain/discomfort - able to function</label>
+        <input type="radio" id="pain6" name="userPain" value=6>
+        <label for="pain6">6</label>
+        <input type="radio" id="pain7" name="userPain" value=7>
+        <label for="pain7">7</label>
+        <input type="radio" id="pain8" name="userPain" value=8>
+        <label for="pain8">8</label>
+        <input type="radio" id="pain9" name="userPain" value=9>
+        <label for="pain9">Arms / Legs</label>
+        <input type="radio" id="pain10" name="userPain" value=10>
+        <label for="pain10">10 - Unending pain/discomfort - unable to stand/function/think</label>
+    </div>
+    <div>
+        <h3>Medical History</h3>
+        <input type="text" id="medicalHistory" name="userHistory" placeholder="Enter your Medical History">
+        <h4>Current Medical Conditions</h4>
+        <input type="text" id="medicalCurrent" name="userCurrent" placeholder="Enter your Current Medical Status">
+        <h4>Current Medications</h4>
+        <input type="text" id="userMedications" name="userMedications" placeholder="Enter your Current Medications">
+        <h4>Allergies</h4>
+        <input type="text" id="userAllergies" name="userAllergies" placeholder="Enter your Allergies">
+    </div>
+    <div>
+        <input type="button" id="registerButton" onclick="alert('Submit')" value="Register"> 
+    </div>
+</body>
+
+</html>
