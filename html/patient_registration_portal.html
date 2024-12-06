@@ -2,95 +2,104 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Patient Portal</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patient Registration</title>
+  <link rel="stylesheet" href="../css/triageLayout.css">
 </head>
 
 <body>
-    <H1>Patient Registration</H1>
-    <div>
-        <h3>Personal Information</h3>
-        <h4>Last Name</h4>
-        <input type="text" id="lastName" name="userName" placeholder="Enter your Last Name">
-        <h4>First Name</h4>
-        <input type="text" id="firstName" name="userName" placeholder="Enter your First Name">
-        <h4>Age</h4>
-        <input type="number" id="age" name="userAge" placeholder="Enter your Age">
-        <h4>Sex</h4>
-        <input type="radio" id="sexFemale" name="userSex" value=true>
-        <label for="sexFemale">Female</label>
-        <input type="radio" id="sexMale" name="userSex" value=false>
-        <label for="sexMale">Male</label>
-        <h4>Health Card Number</h4>
-        <input type="number" id="healthCard" name="userCard" placeholder="Enter your Health Card">
-        <h4>Private Insurance</h4>
-        <input type="number" id="healthInsurance" name="userInsurance" placeholder="Enter your Private Insurance">
-    </div>
-    <div>
-        <h3>Location of Condition on Body</h3>
-        <input type="radio" id="bodyChest" name="userBody" value=0>
-        <label for="bodyChest">Chest</label>
-        <input type="radio" id="bodyHead" name="userBody" value=1>
-        <label for="bodyHead">Head</label>
-        <input type="radio" id="bodyAbdomen" name="userBody" value=2>
-        <label for="bodyAbdomen">Abdomen</label>
-        <input type="radio" id="bodyPelvis" name="userBody" value=3>
-        <label for="bodyPelvis">Pelvis</label>
-        <input type="radio" id="bodyArmsLegs" name="userBody" value=4>
-        <label for="bodyArmsLegs">Arms / Legs</label>
-        <input type="radio" id="bodyHandsFeet" name="userBody" value=5>
-        <label for="bodyHandsFeet">Hands / Feet</label>
-    </div>
-    <div>
-        <h3>Nature of Condition</h3>
-        <input type="checkbox" id="cdnUnconcious" name="condition1" value=0>
-        <label for="cdnUnconcious">Unconcious</label><br>
-        <input type="checkbox" id="cdnTraumaWound" name="condition2" value=1>
-        <label for="cdnTraumaWound">Trauma / Wound</label><br>
-        <input type="checkbox" id="cdnPain" name="condition3" value=2>
-        <label for="cdnPain">Pain</label><br>
-        <input type="checkbox" id="cdnIllness" name="condition4" value=3>
-        <label for="cdnIllness">Illness</label>
-    </div>
-    <div>
-        <h3>Level of Pain / Discomfort</h3>
-        <input type="radio" id="painNone" name="userPain" value=0>
-        <label for="painNone">0 - No pain/discomfort</label>
-        <input type="radio" id="pain1" name="userPain" value=1>
-        <label for="painMild">1</label>
-        <input type="radio" id="pain2" name="userPain" value=2>
-        <label for="pain2">2</label>
-        <input type="radio" id="pain3" name="userPain" value=3>
-        <label for="pain3">3</label>
-        <input type="radio" id="pain4" name="userPain" value=4>
-        <label for="pain4">4</label>
-        <input type="radio" id="pain5" name="userPain" value=5>
-        <label for="pain5">5 - Persistent pain/discomfort - able to function</label>
-        <input type="radio" id="pain6" name="userPain" value=6>
-        <label for="pain6">6</label>
-        <input type="radio" id="pain7" name="userPain" value=7>
-        <label for="pain7">7</label>
-        <input type="radio" id="pain8" name="userPain" value=8>
-        <label for="pain8">8</label>
-        <input type="radio" id="pain9" name="userPain" value=9>
-        <label for="pain9">Arms / Legs</label>
-        <input type="radio" id="pain10" name="userPain" value=10>
-        <label for="pain10">10 - Unending pain/discomfort - unable to stand/function/think</label>
-    </div>
-    <div>
-        <h3>Medical History</h3>
-        <input type="text" id="medicalHistory" name="userHistory" placeholder="Enter your Medical History">
-        <h4>Current Medical Conditions</h4>
-        <input type="text" id="medicalCurrent" name="userCurrent" placeholder="Enter your Current Medical Status">
-        <h4>Current Medications</h4>
-        <input type="text" id="userMedications" name="userMedications" placeholder="Enter your Current Medications">
-        <h4>Allergies</h4>
-        <input type="text" id="userAllergies" name="userAllergies" placeholder="Enter your Allergies">
-    </div>
-    <div>
-        <input type="button" id="registerButton" onclick="alert('Submit')" value="Register"> 
-    </div>
+  <header>
+    <h1>Patient Registration</h1>
+  </header>
+  <main>
+    <!-- Personal Information Section -->
+    <section class="card">
+      <h3>Personal Information</h3>
+      <label for="lastName">Last Name</label>
+      <input type="text" id="lastName" name="lastName" placeholder="Enter your Last Name" required>
+      <label for="firstName">First Name</label>
+      <input type="text" id="firstName" name="firstName" placeholder="Enter your First Name" required>
+      <label for="pronouns">Pronouns</label>
+      <select id="pronouns" name="pronouns">
+        <option value="she/her">She/Her</option>
+        <option value="he/him">He/Him</option>
+        <option value="they/them">They/Them</option>
+        <option value="xie/hir">Xie/Hir</option>
+        <option value="prefer-not-to-specify">Prefer Not to Specify</option>
+      </select>
+      <label for="age">Age</label>
+      <input type="number" id="age" name="age" placeholder="Enter your Age" required min="1">
+      <fieldset>
+        <legend>Sex</legend>
+        <label><input type="radio" id="sexFemale" name="userSex" value="female"> Female</label>
+        <label><input type="radio" id="sexMale" name="userSex" value="male"> Male</label>
+      </fieldset>
+    </section>
+
+    <!-- Condition Location Section -->
+    <section class="card">
+      <h3>Condition Location</h3>
+      <fieldset>
+        <legend>Select All Applicable Locations</legend>
+        <label><input type="radio" name="location_chest" value="chest"> Chest</label>
+        <label><input type="radio" name="location_head" value="head"> Head</label>
+        <label><input type="radio" name="location_abdomen" value="abdomen"> Abdomen</label>
+        <label><input type="radio" name="location_pelvis" value="pelvis"> Pelvis</label>
+        <label><input type="radio" name="location_armsLegs" value="armsLegs"> Arms / Legs</label>
+        <label><input type="radio" name="location_handsFeet" value="handsFeet"> Hands / Feet</label>
+      </fieldset>
+    </section>
+
+    <!-- Condition Type Section -->
+    <section class="card">
+      <h3>Condition Type</h3>
+      <fieldset>
+        <legend>Select the Type(s) of Condition</legend>
+        <label><input type="radio" name="conditionType" value="wound"> Wound</label>
+        <label><input type="radio" name="conditionType" value="pain"> Pain</label>
+        <label><input type="radio" name="conditionType" value="illness"> Illness</label>
+      </fieldset>
+    </section>
+
+    <!-- Pain Level Section -->
+    <section class="card">
+      <h3>Pain Level</h3>
+      <fieldset>
+        <legend>Rate your pain level (1-10):</legend>
+        <p>1 = Minimal Pain, 5 = Moderate Pain, 10 = Severe Pain</p>
+        <label><input type="radio" name="painLevel" value="1"> 1</label>
+        <label><input type="radio" name="painLevel" value="2"> 2</label>
+        <label><input type="radio" name="painLevel" value="3"> 3</label>
+        <label><input type="radio" name="painLevel" value="4"> 4</label>
+        <label><input type="radio" name="painLevel" value="5"> 5</label>
+        <label><input type="radio" name="painLevel" value="6"> 6</label>
+        <label><input type="radio" name="painLevel" value="7"> 7</label>
+        <label><input type="radio" name="painLevel" value="8"> 8</label>
+        <label><input type="radio" name="painLevel" value="9"> 9</label>
+        <label><input type="radio" name="painLevel" value="10"> 10</label>
+      </fieldset>
+    </section>
+
+    <!-- Medical History Section -->
+    <section class="card">
+      <h3>Medical History</h3>
+      <label for="medicalHistory">Past Medical Conditions</label>
+      <input type="text" id="medicalHistory" name="medicalHistory" placeholder="Enter your Medical History">
+      <label for="currentConditions">Current Medical Conditions</label>
+      <input type="text" id="currentConditions" name="currentConditions" placeholder="Enter your Current Conditions">
+      <label for="currentMedications">Current Medications</label>
+      <input type="text" id="currentMedications" name="currentMedications" placeholder="Enter your Medications">
+      <label for="allergies">Allergies</label>
+      <input type="text" id="allergies" name="allergies" placeholder="Enter any Allergies">
+    </section>
+
+    <!-- Submit Section -->
+    <section class="card">
+      <h3>Submit</h3>
+      <button type="submit" id="registerButton" class="action-btn">Register</button>
+    </section>
+  </main>
 </body>
 
 </html>
