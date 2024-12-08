@@ -43,19 +43,19 @@ router.get("/:id", async (req, res) => {
   else res.send(result).status(200);
 });
 
-// let counter = 0;
-// function generateCustomId() {
-//     counter = (counter % 999) + 1; // Recycle counter after 999
-//     const counterStr = counter.toString().padStart(3, '0'); // Ensure it's 3 digits
-//     const timestamp = Date.now().toString();
-//     return `${counterStr}-${timestamp}`;
-// }
+let counter = 0;
+function generateCustomId() {
+    counter = (counter % 999) + 1; // Recycle counter after 999
+    const counterStr = counter.toString().padStart(3, '0'); // Ensure it's 3 digits
+    const timestamp = Date.now().toString();
+    return `${counterStr}-${timestamp}`;
+}
 
 // This section will help you create a new record.
 router.post("/", async (req, res) => {
   try {
     let newDocument = {
-        // _id: generateCustomId(),
+        _id: generateCustomId(),
         displayId: req.body.displayId,
         checkedInTime: req.body.checkedInTime,
         timeWaiting: req.body.timeWaiting,
