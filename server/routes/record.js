@@ -93,7 +93,7 @@ router.patch("/:id", async (req, res) => {
     const query = { _id: new ObjectId(req.params.id) };
     const updates = {
       $set: {
-        // _id: generateCustomId(),
+        _id: generateCustomId(),
         displayId: req.body.displayId,
         checkedInTime: req.body.checkedInTime,
         timeWaiting: req.body.timeWaiting,
