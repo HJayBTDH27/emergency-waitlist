@@ -1,4 +1,18 @@
-/* Global Styles */
+/**
+ * Authors: Ryley Prudhomme, Hugh Jay, Zixiao Wang
+ *
+ * Student IDs: 041137018, 041120736,
+ *
+ * Course CST3106 -  Internet Architecture and Web Development
+ *
+ * Term: Fall 2024
+ *
+ * Assignment: Assignment 3
+ *
+ * Date: 2024-12-08
+ */
+ 
+ /* Global Styles */
 body {
   font-family: "Helvetica", sans-serif;
   background: linear-gradient(to bottom, #E7DFD0, #FDEDED); /* Pearl to Wisp Pink */
