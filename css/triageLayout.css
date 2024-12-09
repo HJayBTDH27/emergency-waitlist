@@ -1,0 +1,131 @@
+/**
+ * Authors: Ryley Prudhomme, Hugh Jay, Zixiao Wang
+ *
+ * Student IDs: 041137018, 041120736,
+ *
+ * Course CST3106 -  Internet Architecture and Web Development
+ *
+ * Term: Fall 2024
+ *
+ * Assignment: Assignment 3
+ *
+ * Date: 2024-12-08
+ */
+ 
+ /* Global Styles */
+body {
+  font-family: "Helvetica", sans-serif;
+  background: linear-gradient(to bottom, #E7DFD0, #FDEDED); /* Pearl to Wisp Pink */
+  margin: 0;
+  padding: 0;
+  color: #18404A; /* Nile Blue */
+}
+
+header {
+  text-align: center;
+  background-color: #DC143C; /* Candy Apple */
+  color: #FFFFFF; /* White */
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+h1 {
+  margin: 0;
+}
+
+/* Card Section */
+.card {
+  background: #FFFFFF; /* White */
+  padding: 20px;
+  margin: 20px auto;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  border-radius: 8px;
+  max-width: 800px;
+}
+
+h3 {
+  color: #DC143C; /* Candy Apple */
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+}
+
+/* Form and Input Styles */
+label {
+  display: block;
+  margin: 10px 0 5px;
+  font-weight: bold;
+  color: #18404A; /* Nile Blue */
+}
+
+input, select, textarea {
+  display: block;
+  width: 90%;
+  max-width: 400px;
+  margin: 5px auto 15px;
+  padding: 10px;
+  border: 1px solid #CCC;
+  border-radius: 4px;
+}
+
+fieldset {
+  margin: 20px 0;
+  padding: 10px;
+  border: 1px solid #CCC;
+  border-radius: 6px;
+}
+
+legend {
+  font-weight: bold;
+  color: #DC143C; /* Candy Apple */
+}
+
+/* Checkbox and Radio Styles */
+input[type="checkbox"], input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 15px;
+  height: 15px;
+  border: 1px solid #DC143C; /* Candy Apple */
+  border-radius: 3px; /* Square with slight rounding for checkboxes */
+  outline: none;
+  cursor: pointer;
+  margin-right: 10px;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+input[type="checkbox"]:checked, input[type="radio"]:checked {
+  background-color: #DC143C; /* Candy Apple */
+  border-color: #DC143C;
+}
+
+input[type="checkbox"]:hover, input[type="radio"]:hover {
+  border-color: #18404A; /* Nile Blue */
+  transform: scale(1.1); /* Slight enlargement on hover */
+}
+
+/* Button Styles */
+.action-btn {
+  background-color: #05B2BC; /* Pacific Blue */
+  color: #FFFFFF; /* White */
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 5px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  display: inline-block;
+  text-align: center;
+}
+
+.action-btn:hover {
+  background-color: #18404A; /* Nile Blue */
+  transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .card {
+    max-width: 90%;
+  }
+}

@@ -1,0 +1,53 @@
+<!--
+Authors: Ryley Prudhomme, Hugh Jay, Zixiao Wang
+
+Student IDs: 041137018, 041120736
+
+Course CST3106 - Internet Architecture and Web Development
+
+Term: Fall 2024
+
+Assignment: Assignment 3
+
+Date: 2024-12-08
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="../css/triageLayout.css">
+</head>
+
+<body>
+  <header>
+    <h1>Triage Dashboard</h1>
+  </header>
+  <main>
+    <section class="card">
+      <h3>New Patients</h3>
+      <ul id="newPatients" class="patient-list">
+        <li class="patient-item">
+          <span>John Doe - ID: 123</span>
+          <button class="action-btn">Triage</button>
+        </li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h3>Triaged Patients</h3>
+      <ul id="triagedPatients" class="patient-list">
+        <li class="patient-item">
+          <span>Jane Smith - ID: 456</span>
+          <button class="action-btn">Admit</button>
+          <button class="action-btn">Dismiss</button>
+        </li>
+      </ul>
+    </section>
+  </main>
+</body>
+
+</html>
