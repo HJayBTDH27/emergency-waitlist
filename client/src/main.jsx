@@ -7,7 +7,7 @@ import {
 import App from "./App";
 import Record from "./components/Record";
 import RecordList from "./components/RecordList";
-import "css/triageLayout.css";
+import "./css/triageLayout.css";
 
 const router = createBrowserRouter([
   {
