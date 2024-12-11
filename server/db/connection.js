@@ -36,6 +36,6 @@ try {
   console.error(err);
 }
 
-let db = client.db("employees");
+let db = client.db("emergency_waitlist");
 
 export default db;
