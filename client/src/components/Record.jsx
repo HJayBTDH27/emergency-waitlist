@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 
 export default function Record() {
     const [form, setForm] = useState({
+        // remove any values that are not included on the form.
         triaged: false,
         urgency: 0,
         severity: 0,
@@ -58,6 +59,27 @@ export default function Record() {
         });
     }
 
+    // These methods will calculate wait urgency and severity values
+    // TODO: move these to the appropriate file - either record.js or recordlist
+    function timeCalculator(checkIn) {
+        const thePresent = Date.now();
+        const timeWaiting = thePresent - checkIn;
+        return Math.floor(timeWaiting/(60*60)); // return time waiting in hours
+    } 
+    function severityCalculator(code, type, level) {
+        const howSevere = sum(code, type, level);
+        return howSevere;
+    }
+    function urgencyCalculator(thisSevere, thisLong) {
+        const howUrgent = thisSevere - thisLong;
+        if (howUrgent < 0) {
+            howUrgent = 0;
+            return howUrgent;
+        } else {
+            return howUrgent;
+        }
+    }
+
     // This function will handle the submission.
     async function onSubmit(e) {
         e.preventDefault();
@@ -91,6 +113,7 @@ export default function Record() {
             console.error('A problem occurred with your fetch operation: ', error);
         } finally {
             setForm({
+                // remove any values that are not included on the form.
                 triaged: false,
                 urgency: 0,
                 severity: 0,

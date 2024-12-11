@@ -7,6 +7,7 @@ import {
 import App from "./App";
 import Record from "./components/Record";
 import RecordList from "./components/RecordList";
+import WaitList from "./components/WaitList";
 import "../../css/triageLayout.css";
 
 const router = createBrowserRouter([
@@ -36,7 +37,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/wait",
-        element: <Record />,
+        element: <WaitList />,
       },
     ],
   },
