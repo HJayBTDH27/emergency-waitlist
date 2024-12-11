@@ -36,7 +36,7 @@ router.get("/", async (req, res) => {
 // This section will help you get a single record by id
 router.get("/:id", async (req, res) => {
   let collection = await db.collection("patients");
-  let query = { _id: new ObjectId(req.params.id) };
+  let query = { displayId: new ObjectId(req.params.id) };
   let result = await collection.findOne(query);
 
   if (!result) res.send("Not found").status(404);
@@ -48,16 +48,18 @@ function generateCustomId() {
     counter = (counter % 999) + 1; // Recycle counter after 999
     const counterStr = counter.toString().padStart(3, '0'); // Ensure it's 3 digits
     const timestamp = Date.now().toString();
-    return `${counterStr}-${timestamp}`;
+    return `${counterStr}${timestamp}`;
 }
 
 // This section will help you create a new record.
 router.post("/", async (req, res) => {
   try {
+    let idString = generateCustomId();
+    let idArray = [idString, idString.slice(0,2), idString.slice(3)]
     let newDocument = {
-        _id: generateCustomId(),
-        displayId: req.body.displayId,
-        checkedInTime: req.body.checkedInTime,
+        _id: Number(idArray[0]),
+        displayId: Number(idArray[1]),
+        checkedInTime: Number(idArray[2]),
         triaged: req.body.triaged,
         urgency: req.body.urgency,
         severity: req.body.severity,
