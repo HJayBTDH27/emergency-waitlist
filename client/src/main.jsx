@@ -21,11 +21,11 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "/edit/:id",
+    path: "/admin/:id",
     element: <App />,
     children: [
       {
-        path: "/edit/:id",
+        path: "/admin/:id",
         element: <RecordList />,
       },
     ],

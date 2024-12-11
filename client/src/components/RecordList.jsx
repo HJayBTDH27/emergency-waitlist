@@ -24,7 +24,7 @@ const Record = (props) => (
     <td>
       <div>
         <Link
-          to={`/edit/${props.record._id}`}
+          to={`/admin/${props.record._id}`}
         >
           Edit
         </Link>
