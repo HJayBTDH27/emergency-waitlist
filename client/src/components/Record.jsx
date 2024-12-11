@@ -125,7 +125,7 @@ export default function Record() {
                     <label for="firstName">First Name</label>
                     <input type="text" id="firstName" name="firstName" placeholder="Enter your First Name" required value={form.firstName} onChange={(e) => updateForm({ firstName: e.target.value })} />
                     <label for="pronouns">Pronouns</label>
-                    <select id="pronouns" name="pronouns" value={pronouns} onchange={handleChange}>
+                    <select id="pronouns" name="pronouns" value={pronouns} onchange={(e) => updateForm({ pronouns: e.target.value })}>
                         <option value="she/her">She/Her</option>
                         <option value="he/him">He/Him</option>
                         <option value="they/them">They/Them</option>
@@ -133,7 +133,7 @@ export default function Record() {
                         <option value="prefer-not-to-specify">Prefer Not to Specify</option>
                     </select>
                     <label for="age">Age</label>
-                    <input type="number" id="age" name="age" placeholder="Enter your Age" required min="1" />
+                    <input type="number" id="age" name="age" placeholder="Enter your Age" required min="1" value={form.age} onChange={(e) => updateForm({ age: e.target.value })}/>
                     <fieldset>
                         <legend>Sex</legend>
                         <label>Female</label>
