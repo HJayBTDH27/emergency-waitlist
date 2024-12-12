@@ -3,10 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 
 export default function Record() {
     const [form, setForm] = useState({
-        // remove any values that are not included on the form.
         triaged: false,
-        urgency: 0,
-        severity: 0,
         admitted: false,
         firstName: "",
         lastName: "",
@@ -49,45 +46,20 @@ export default function Record() {
             setForm(record);
         }
         fetchData();
-        return;
     }, [params.id, navigate]);
 
-    // These methods will update the state properties.
     function updateForm(value) {
         return setForm((prev) => {
             return { ...prev, ...value };
         });
     }
 
-    // These methods will calculate wait urgency and severity values
-    // TODO: move these to the appropriate file - either record.js or recordlist
-    function timeCalculator(checkIn) {
-        const thePresent = Date.now();
-        const timeWaiting = thePresent - checkIn;
-        return Math.floor(timeWaiting/(60*60)); // return time waiting in hours
-    } 
-    function severityCalculator(code, type, level) {
-        const howSevere = sum(code, type, level);
-        return howSevere;
-    }
-    function urgencyCalculator(thisSevere, thisLong) {
-        const howUrgent = thisSevere - thisLong;
-        if (howUrgent < 0) {
-            howUrgent = 0;
-            return howUrgent;
-        } else {
-            return howUrgent;
-        }
-    }
-
-    // This function will handle the submission.
     async function onSubmit(e) {
         e.preventDefault();
         const person = { ...form };
         try {
             let response;
             if (isNew) {
-                // if we are adding a new record we will POST to /record.
                 response = await fetch("http://localhost:5050/record", {
                     method: "POST",
                     headers: {
@@ -96,7 +68,6 @@ export default function Record() {
                     body: JSON.stringify(person),
                 });
             } else {
-                // if we are updating a record we will PATCH to /record/:id.
                 response = await fetch(`http://localhost:5050/record/${params.id}`, {
                     method: "PATCH",
                     headers: {
@@ -107,33 +78,14 @@ export default function Record() {
             }
 
             if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+                const message = `An error has occurred: ${response.statusText}`;
+                console.error(message);
+                return;
             }
-        } catch (error) {
-            console.error('A problem occurred with your fetch operation: ', error);
-        } finally {
-            setForm({
-                // remove any values that are not included on the form.
-                triaged: false,
-                urgency: 0,
-                severity: 0,
-                admitted: false,
-                firstName: "",
-                lastName: "",
-                pronouns: "",
-                age: 0,
-                biologicalSex: false,
-                publicHealthNum: 0,
-                privateHealthNum: 0,
-                conditionCode: 0,
-                conditionType: 0,
-                painLevel: 0,
-                medications: "",
-                medicalPresent: "",
-                medicalHistory: "",
-                allergies: ""
-            });
+
             navigate("/");
+        } catch (error) {
+            console.error("Error submitting form:", error);
         }
     }
 
@@ -144,11 +96,29 @@ export default function Record() {
                 <section class="card">
                     <h3>Personal Information</h3>
                     <label for="lastName">Last Name</label>
-                    <input type="text" id="lastName" name="lastName" placeholder="Enter your Last Name" required value={form.lastName} onChange={(e) => updateForm({ lastName: e.target.value })} />
+                    <input
+                        type="text"
+                        id="lastName"
+                        name="lastName"
+                        placeholder="Enter your Last Name"
+                        value={form.lastName}
+                        onChange={(e) => updateForm({ lastName: e.target.value })}
+                        required />
                     <label for="firstName">First Name</label>
-                    <input type="text" id="firstName" name="firstName" placeholder="Enter your First Name" required value={form.firstName} onChange={(e) => updateForm({ firstName: e.target.value })} />
+                    <input
+                        type="text"
+                        id="firstName"
+                        name="firstName"
+                        placeholder="Enter your First Name"
+                        value={form.firstName}
+                        onChange={(e) => updateForm({ firstName: e.target.value })}
+                        required />
                     <label for="pronouns">Pronouns</label>
-                    <select id="pronouns" name="pronouns" value={pronouns} onchange={(e) => updateForm({ pronouns: e.target.value })}>
+                    <select
+                        id="pronouns"
+                        name="pronouns"
+                        value={form.pronouns}
+                        onchange={(e) => updateForm({ pronouns: e.target.value })}>
                         <option value="she/her">She/Her</option>
                         <option value="he/him">He/Him</option>
                         <option value="they/them">They/Them</option>
@@ -156,7 +126,14 @@ export default function Record() {
                         <option value="prefer-not-to-specify">Prefer Not to Specify</option>
                     </select>
                     <label for="age">Age</label>
-                    <input type="number" id="age" name="age" placeholder="Enter your Age" required min="1" value={form.age} onChange={(e) => updateForm({ age: e.target.value })}/>
+                    <input
+                        type="number"
+                        id="age"
+                        name="age"
+                        min="1"
+                        value={form.age}
+                        onChange={(e) => updateForm({ age: e.target.value })}
+                        required />
                     <fieldset>
                         <legend>Sex</legend>
                         <label>Female</label>
@@ -176,6 +153,25 @@ export default function Record() {
                             checked={form.biologicalSex === false}
                             onChange={(e) => updateForm({ biologicalSex: e.target.value })} />
                     </fieldset>
+                    <div>
+                        <label htmlFor="publicHealthNum">Public Health Number:</label>
+                        <input
+                            type="number"
+                            id="publicHealthNum"
+                            value={form.publicHealthNum}
+                            onChange={(e) => updateForm({ publicHealthNum: e.target.value })}
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor="privateHealthNum">Private Health Number:</label>
+                        <input
+                            type="number"
+                            id="privateHealthNum"
+                            value={form.privateHealthNum}
+                            onChange={(e) => updateForm({ privateHealthNum: e.target.value })}
+                        />
+                    </div>
                 </section>
                 {/* <!-- Condition Location Section --> */}
                 <section class="card">

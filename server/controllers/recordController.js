@@ -25,8 +25,8 @@ exports.getRecordById = async (req, res) => {
 
 // Create a new record
 exports.createRecord = async (req, res) => {
-    const record = new Record(req.body);
     try {
+        const record = new Record(req.body);
         const newRecord = await record.save();
         res.status(201).json(newRecord);
     } catch (error) {
@@ -50,11 +50,11 @@ exports.updateRecord = async (req, res) => {
 // Delete a record
 exports.deleteRecord = async (req, res) => {
     try {
-        const record = await Record.findByIdAndDelete(req.params.id);
-        if (!record) {
+        const deletedRecord = await Record.findByIdAndDelete(req.params.id);
+        if (!deletedRecord) {
             return res.status(404).json({ message: 'Record not found' });
         }
-        res.status(200).json({ message: 'Record deleted' });
+        res.status(200).json({ message: 'Record deleted successfully' });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }

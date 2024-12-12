@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 const Record = (props) => (
@@ -41,6 +42,29 @@ const Record = (props) => (
     </td>
   </tr>
 );
+
+// These methods will calculate urgency and severity values
+
+function severityCalculator(code, type, level) {
+  const howSevere = sum(code, type, level);
+  return howSevere;
+}
+
+function urgencyCalculator(thisSevere, thisLong) {
+    const howUrgent = thisSevere - thisLong;
+    if (howUrgent < 0) {
+        howUrgent = 0;
+        return howUrgent;
+    } else {
+        return howUrgent;
+    }
+}
+
+function timeCalculator(checkIn) {
+  const thePresent = Date.now();
+  const timeWaiting = thePresent - checkIn;
+  return Math.floor(timeWaiting/(60*60)); // return time waiting in hours
+} 
 
 export default function RecordList() {
   const [records, setRecords] = useState([]);
