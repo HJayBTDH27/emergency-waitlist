@@ -22,11 +22,11 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "/admin/:id",
+    path: "/admin/",
     element: <App />,
     children: [
       {
-        path: "/admin/:id",
+        path: "/admin/",
         element: <RecordList />,
       },
     ],

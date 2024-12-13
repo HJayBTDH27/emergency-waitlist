@@ -51,7 +51,7 @@ function severityCalculator(code, type, level) {
 }
 
 function urgencyCalculator(thisSevere, thisLong) {
-    const howUrgent = thisSevere - thisLong;
+    var howUrgent = thisSevere - thisLong;
     if (howUrgent < 0) {
         howUrgent = 0;
         return howUrgent;

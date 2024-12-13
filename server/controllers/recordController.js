@@ -29,6 +29,7 @@ exports.createRecord = async (req, res) => {
         const record = new Record(req.body);
         const newRecord = await record.save();
         res.status(201).json(newRecord);
+        console.log("Record", newRecord);
     } catch (error) {
         res.status(400).json({ message: error.message });
     }
@@ -42,6 +43,7 @@ exports.updateRecord = async (req, res) => {
             return res.status(404).json({ message: 'Record not found' });
         }
         res.status(200).json(updatedRecord);
+        console.log("Record updated", updatedRecord);
     } catch (error) {
         res.status(400).json({ message: error.message });
     }

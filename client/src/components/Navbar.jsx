@@ -5,7 +5,8 @@ export default function Navbar() {
     <div>
       <nav className="navbar_link">
         <NavLink to="/">Patient Registration</NavLink>
-        <NavLink className="navbar_link" to="/wait">Wait Times</NavLink>
+        <NavLink to="/wait">Wait Times</NavLink>
+        <NavLink to="/admin">Triage Admin</NavLink>
       </nav>
     </div>
   );

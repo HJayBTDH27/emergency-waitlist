@@ -43,23 +43,32 @@ const WaitList = () => {
         e.preventDefault();
         if (!displayId || !lastName) return;
 
+        console.log("displayId", displayId);
+        console.log("lastName", lastName);
+
         const response = await fetch(`http://localhost:5050/record?displayId=${displayId}&lastName=${lastName}`);
         if (!response.ok) {
             const message = `An error has occurred: ${response.statusText}`;
             console.error(message);
             return;
         }
+
         const record = await response.json();
         if (!record) {
             console.warn(`Record with displayId ${displayId} and lastName ${lastName} not found`);
             navigate("/");
             return;
         }
-        setRecord(record);
-        const checkInTime = new Date(record.checkedInTime).getTime();
-        const currentTime = Date.now();
-        const timeWaiting = Math.floor((currentTime - checkInTime) / (60 * 60 * 1000)); // time in hours
-        setWaitingTime(timeWaiting);
+
+        console.log("Record", record);
+        const records = record;
+        
+        setRecord(records);
+        console.log("Stringed JSON ", JSON.stringify(records.checkedInTime));
+        console.log("Date calculate ", new Date(records.checkedInTime).toLocaleString("en-CA"));
+        console.log("Date from hard-code ", new Date(1734028861428).toLocaleString("en-CA"));
+
+        setWaitingTime(timeCalculator(records.checkedInTime));
     };
 
     return (
@@ -69,7 +78,7 @@ const WaitList = () => {
                 <div>
                     <label htmlFor="displayId">Display ID:</label>
                     <input
-                        type="text"
+                        type="number"
                         id="displayId"
                         value={displayId}
                         onChange={(e) => setDisplayId(e.target.value)}
@@ -93,7 +102,7 @@ const WaitList = () => {
                     <h2>Patient Information</h2>
                     <p>First Name: {record.firstName}</p>
                     <p>Last Name: {record.lastName}</p>
-                    <p>Checked In Time: {new Date(record.checkedInTime).toLocaleString()}</p>
+                    <p>Checked In Time: {new Date(record.checkedInTime).toLocaleString("en-CA")}</p>
                     <p>Waiting Time: {waitingTime} hours</p>
                 </div>
             )}
@@ -101,5 +110,13 @@ const WaitList = () => {
     );
 };
 
+function timeCalculator(checkIn) {
+    const thePresent = Date.now();
+    console.log(thePresent);
+    console.log(checkIn);
+    const timeWaiting = thePresent - checkIn;
+    console.log(timeWaiting);
+    return Math.floor(timeWaiting/( 60 * 60 * 1000 )); // return time waiting in hours
+} 
 export default WaitList;
 
